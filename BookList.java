@@ -3,5 +3,6 @@ public class BookList{
     
 	public BookList(){
         list = new ArrayList<Book>();
+        list.add(new Book());
     }
 }
