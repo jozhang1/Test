@@ -18,5 +18,18 @@ void convert(node *root, node **head){
 }
 
 node* convert2(node *root){
-    
+    if(root==NULL)return NULL;
+    if(root->left!=NULL){
+        node left = convert2(root->left);
+        while(;left->right!=NULL;left=left->right);
+        left->right=root;
+        root->left=left;
+    }
+    if(root->right!=NULL){
+        node right = convert2(root->right);
+        while(;right->left!=NULL;right=right->left);
+        right->left=root;
+        root->right=right;
+    }
+    return root;
 }
