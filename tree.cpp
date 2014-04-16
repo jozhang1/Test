@@ -33,3 +33,32 @@ node* convert2(node *root){
     }
     return root;
 }
+
+void fixprev(node *root){
+    static node *prev=NULL;
+    if(root!=NULL){
+        fixprev(root->left);
+        root->left=prev;
+        prev=root;
+        fixprev(root->right);
+    }
+}
+
+node * fixnext(node *root){
+    node *prev=NULL;
+    while(root && root->right){
+        root=root->right;
+    }
+    while(root && root->left){
+        prev=root;
+        root=root->left;
+        root->right=prev;
+    }
+    return root;
+}
+
+node * convert3(node *root){
+    if(root==NULL)return NULL;
+    fixprev(root);
+    return fixnext(root);
+}
