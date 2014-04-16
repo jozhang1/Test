@@ -62,3 +62,13 @@ node * convert3(node *root){
     fixprev(root);
     return fixnext(root);
 }
+
+int sumTree(node *root){
+    if(root==NULL){
+        return 0;
+    }
+    int value=root->data;
+    root->data = sumTree(root->left)+sumTree(root->right);
+    return root->data+value;
+    
+}
